@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing — Launchpad Analytics</title>
+  <title>Pricing — Flowboard</title>
   <link rel="stylesheet" href="css/styles.css">
 
   <script src="https://cdn.test.rebrandly.com/sdk/v1/rbly.min.js" data-api-key="cf4e229e40244202b5a986dd4e06c159"></script>
+
 </head>
 <body>
 
   <!-- Nav -->
   <nav class="nav">
     <div class="container">
-      <a href="index.html" class="nav__logo"><span>Launchpad</span> Analytics</a>
+      <a href="index.html" class="nav__logo"><span>Flow</span>board</a>
       <ul class="nav__links">
         <li><a href="features.html">Features</a></li>
         <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="signup.html" class="btn btn--small btn--primary"
-               data-ct-event="cta_click" data-ct-cta="nav">Start Free Trial</a></li>
+        <li><a href="signup.html" class="btn btn--small btn--primary">Start Free Trial</a></li>
       </ul>
     </div>
   </nav>
@@ -27,7 +27,7 @@
   <section class="hero">
     <div class="container">
       <h1>Simple, transparent <span>pricing</span></h1>
-      <p>Start free. Upgrade when you need more power. No surprises.</p>
+      <p>Start free. Upgrade when your team grows. No surprises.</p>
     </div>
   </section>
 
@@ -36,63 +36,60 @@
     <div class="container">
       <div class="pricing-grid">
 
-        <!-- Starter -->
+        <!-- Free -->
         <div class="pricing-card">
-          <div class="pricing-card__name">Starter</div>
+          <div class="pricing-card__name">Free</div>
           <div class="pricing-card__price">$0 <span>/month</span></div>
-          <div class="pricing-card__desc">For individuals getting started</div>
+          <div class="pricing-card__desc">For individuals and small teams</div>
           <ul class="pricing-card__features">
-            <li>1,000 tracked links</li>
-            <li>5,000 events/month</li>
-            <li>7-day attribution window</li>
-            <li>Basic funnel analytics</li>
-            <li>1 team member</li>
+            <li>Up to 5 team members</li>
+            <li>3 active projects</li>
+            <li>Kanban boards</li>
+            <li>Basic task management</li>
+            <li>500 MB file storage</li>
           </ul>
-          <a href="signup.html?plan=starter" class="btn btn--secondary"
-             data-ct-event="plan_selected" data-ct-plan="starter" data-ct-value="0">Get Started Free</a>
+          <a href="signup.html?plan=free" class="btn btn--secondary">Get Started Free</a>
         </div>
 
-        <!-- Professional -->
+        <!-- Pro -->
         <div class="pricing-card pricing-card--featured">
-          <div class="pricing-card__name">Professional</div>
-          <div class="pricing-card__price">$79 <span>/month</span></div>
-          <div class="pricing-card__desc">For growing marketing teams</div>
+          <div class="pricing-card__name">Pro</div>
+          <div class="pricing-card__price">$12 <span>/user/mo</span></div>
+          <div class="pricing-card__desc">For growing teams that need more</div>
           <ul class="pricing-card__features">
-            <li>Unlimited tracked links</li>
-            <li>100,000 events/month</li>
-            <li>30-day attribution window</li>
-            <li>Revenue attribution</li>
-            <li>CSV export</li>
-            <li>5 team members</li>
+            <li>Unlimited team members</li>
+            <li>Unlimited projects</li>
+            <li>Gantt charts & timelines</li>
+            <li>Workflow automations</li>
+            <li>Sprint reports</li>
+            <li>10 GB file storage</li>
             <li>Priority support</li>
           </ul>
-          <a href="signup.html?plan=professional" class="btn btn--primary"
-             data-ct-event="plan_selected" data-ct-plan="professional" data-ct-value="79">Start Free Trial</a>
+          <a href="signup.html?plan=pro" class="btn btn--primary">Start Free Trial</a>
         </div>
 
         <!-- Enterprise -->
         <div class="pricing-card">
           <div class="pricing-card__name">Enterprise</div>
-          <div class="pricing-card__price">$249 <span>/month</span></div>
+          <div class="pricing-card__price">$29 <span>/user/mo</span></div>
           <div class="pricing-card__desc">For organizations at scale</div>
           <ul class="pricing-card__features">
-            <li>Unlimited everything</li>
-            <li>1M events/month</li>
-            <li>90-day attribution window</li>
-            <li>Custom event properties</li>
-            <li>SSO & advanced permissions</li>
-            <li>Unlimited team members</li>
+            <li>Everything in Pro</li>
+            <li>SSO & SAML</li>
+            <li>Advanced permissions</li>
+            <li>Audit logs</li>
+            <li>Custom integrations</li>
+            <li>Unlimited storage</li>
             <li>Dedicated account manager</li>
           </ul>
-          <a href="signup.html?plan=enterprise" class="btn btn--secondary"
-             data-ct-event="plan_selected" data-ct-plan="enterprise" data-ct-value="249">Contact Sales</a>
+          <a href="signup.html?plan=enterprise" class="btn btn--secondary">Contact Sales</a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- FAQ-style section -->
+  <!-- FAQ -->
   <section class="section">
     <div class="container">
       <div class="section__header">
@@ -101,15 +98,15 @@
       <div class="feature-grid">
         <div class="feature-card">
           <h3>Can I switch plans later?</h3>
-          <p>Yes. Upgrade or downgrade anytime. Changes take effect on your next billing cycle. No lock-in contracts.</p>
+          <p>Yes. Upgrade or downgrade anytime. Changes take effect on your next billing cycle.</p>
         </div>
         <div class="feature-card">
-          <h3>What counts as an "event"?</h3>
-          <p>Any tracked interaction: page view, form submission, purchase, download. Page views from tracked links count toward your limit.</p>
+          <h3>Is there a free trial for paid plans?</h3>
+          <p>Yes — 14 days on Pro and Enterprise. No credit card required to start.</p>
         </div>
         <div class="feature-card">
           <h3>Do you offer annual billing?</h3>
-          <p>Yes — save 20% with annual billing on Professional and Enterprise plans. Contact us for details.</p>
+          <p>Yes — save 20% with annual billing on Pro and Enterprise plans.</p>
         </div>
       </div>
     </div>
@@ -119,10 +116,9 @@
   <section class="section section--alt">
     <div class="container">
       <div class="cta-banner">
-        <h2>Ready to see your real ROI?</h2>
+        <h2>Ready to get your team organized?</h2>
         <p>14-day free trial on all paid plans. No credit card required.</p>
-        <a href="signup.html" class="btn btn--large"
-           data-ct-event="cta_click" data-ct-cta="pricing_bottom">Start Free Trial</a>
+        <a href="signup.html" class="btn btn--large">Start Free Trial</a>
       </div>
     </div>
   </section>
@@ -132,8 +128,8 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="nav__logo"><span>Launchpad</span> Analytics</div>
-          <p>Full-funnel attribution for modern marketing teams.</p>
+          <div class="nav__logo"><span>Flow</span>board</div>
+          <p>Project management that gets out of the way.</p>
         </div>
         <div>
           <h4>Product</h4>
@@ -148,7 +144,7 @@
           <ul>
             <li><a href="#">Documentation</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Changelog</a></li>
+            <li><a href="#">Templates</a></li>
           </ul>
         </div>
         <div>
@@ -161,7 +157,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        &copy; 2026 Launchpad Analytics. This is a demo site for Rebrandly Conversion Tracking.
+        &copy; 2026 Flowboard. This is a demo site for Rebrandly Conversion Tracking.
       </div>
     </div>
   </footer>
