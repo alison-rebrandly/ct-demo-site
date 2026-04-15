@@ -1,34 +1,37 @@
 /**
- * CT Demo Site — Event Helpers
+ * CT Demo Site — Conversion Event Tracking
  *
- * This file contains the custom conversion event calls that will fire
- * when users interact with key elements on the demo site.
+ * Uses the Rebrandly Conversion Tracking SDK loaded via:
+ * <script src="https://cdn.test.rebrandly.com/sdk/v1/rbly.min.js" data-api-key="...">
  *
- * IMPORTANT: The actual Rebrandly CT snippet must be loaded in the <head>
- * of each page BEFORE these events will work. Alison will provide the snippet.
- *
- * Until the snippet is added, these functions log to the console so you can
- * verify they fire at the right time.
+ * SDK method: trackConversion({ eventName, revenue, currency, properties })
  */
 
-// ── Utility: safe wrapper around the CT SDK ──
-function trackEvent(eventName, properties) {
-  console.log('[CT Demo] Event:', eventName, properties || {});
+// ── Safe wrapper around the CT SDK ──
+function trackEvent(eventName, opts) {
+  opts = opts || {};
+  var payload = {
+    eventName: eventName,
+    properties: opts.properties || {}
+  };
+  if (opts.revenue !== undefined) payload.revenue = opts.revenue;
+  if (opts.currency) payload.currency = opts.currency;
 
-  // Once the Rebrandly CT snippet is loaded, replace the console.log above
-  // with the actual SDK call. Example (uncomment when ready):
-  //
-  // if (typeof rbly !== 'undefined' && rbly.track) {
-  //   rbly.track(eventName, properties);
-  // }
+  console.log('[CT Demo] trackConversion:', payload);
+
+  if (typeof trackConversion === 'function') {
+    trackConversion(payload);
+  }
 }
 
 // ── Page View (auto-fires on every page) ──
 document.addEventListener('DOMContentLoaded', function () {
   trackEvent('page_view', {
-    page: document.title,
-    path: window.location.pathname,
-    referrer: document.referrer
+    properties: {
+      page: document.title,
+      path: window.location.pathname,
+      referrer: document.referrer
+    }
   });
 });
 
@@ -36,14 +39,20 @@ document.addEventListener('DOMContentLoaded', function () {
 document.querySelectorAll('[data-ct-event]').forEach(function (el) {
   el.addEventListener('click', function () {
     var eventName = el.getAttribute('data-ct-event');
-    var eventProps = {};
+    var props = {};
 
-    // Pull optional properties from data attributes
-    if (el.getAttribute('data-ct-plan'))    eventProps.plan = el.getAttribute('data-ct-plan');
-    if (el.getAttribute('data-ct-value'))   eventProps.value = parseFloat(el.getAttribute('data-ct-value'));
-    if (el.getAttribute('data-ct-cta'))     eventProps.cta_location = el.getAttribute('data-ct-cta');
+    if (el.getAttribute('data-ct-plan'))  props.plan = el.getAttribute('data-ct-plan');
+    if (el.getAttribute('data-ct-cta'))   props.cta_location = el.getAttribute('data-ct-cta');
 
-    trackEvent(eventName, eventProps);
+    var opts = { properties: props };
+
+    // If there's a dollar value (pricing cards), include revenue
+    if (el.getAttribute('data-ct-value')) {
+      opts.revenue = parseFloat(el.getAttribute('data-ct-value'));
+      opts.currency = 'USD';
+    }
+
+    trackEvent(eventName, opts);
   });
 });
 
@@ -54,9 +63,20 @@ if (signupForm) {
     e.preventDefault();
 
     var formData = new FormData(signupForm);
+    var plan = formData.get('plan') || 'starter';
+
+    // Map plan to revenue value
+    var planPrices = { starter: 0, professional: 79, enterprise: 249 };
+    var revenue = planPrices[plan] || 0;
+
     trackEvent('signup_completed', {
-      plan: formData.get('plan') || 'free',
-      company_size: formData.get('company_size') || '',
+      revenue: revenue,
+      currency: 'USD',
+      properties: {
+        plan: plan,
+        company_size: formData.get('company_size') || '',
+        company: formData.get('company') || ''
+      }
     });
 
     // Redirect to thank-you page after tracking
